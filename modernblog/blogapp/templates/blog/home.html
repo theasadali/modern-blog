@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+
+<body>
+    <!-- <h1>Welcome to My Blog</h1> -->
+
+    {% for post in posts %}
+    <div>
+        <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+        <p>{{ post.content|truncatewords:20 }}</p>
+        <small>Published on: {{ post.published_at }}</small>
+    </div>
+    <hr>
+    {% empty %}
+    <p>No posts yet.</p>
+    {% endfor %}
+</body>
+
+</html>
